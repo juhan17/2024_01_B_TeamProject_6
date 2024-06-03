@@ -19,47 +19,53 @@ public class GameManager : MonoBehaviour
     public static event Action<int> OnPointChanged;             //점수가 변경 되었을때 이벤트를 발생 시킨다. 
     public static event Action<int> OnBestScoreChanged;             //최고 점수가 변경 되었을때 이벤트를 발생 시킨다. 
 
-    public void GenObject()                     //생성 관련 변수값 변경 시켜주는 함수 
-    {
-        isGen = false;                          //생성 완료 되었으니 bool 을 false 변경 
-        timeCheck = 1.0f;                       //생성 완료 후 1.0초로 시간 초기화
-    }
 
     // Start is called before the first frame update
     void Start()
     {
-        BestScore = PlayerPrefs.GetInt("BestScore");
-        GenObject();
+        BestScore = PlayerPrefs.GetInt("BestScore");      
         OnPointChanged?.Invoke(Point);                          //시작할 때 점수 1번 갱신
         OnBestScoreChanged?.Invoke(BestScore);                  //시작할 때 최고 점수 1번 갱신
+        timeCheck = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isGen == false)                                      //isGen 플레그가 false 일 경우
-        {
-            timeCheck -= Time.deltaTime;                        //매 프레임 돌아가면서 시간을 감소 시킨다.
-            if (timeCheck <= 0.0f)                                //0초 이하가 되었을 경우
-            {
-                int RandNumber = UnityEngine.Random.Range(0, 3);                // 0 ~ 2 의 랜덤 넘버 생성
-                lanchobj = Instantiate(circleObject[RandNumber]);     //프리팹 생성후 Temp 오브젝트에 넣는다. 
-                lanchobj.transform.SetParent(genTransform);
-                lanchobj.transform.position = genTransform.position;    //고정 위치에 생성 시킨다.
-                isGen = true;
-            }
-        }
-        else
-        {
-            if(Input.GetKeyUp(KeyCode.Space))
-            {
-                if (lanchobj == null)
-                    return;
 
-                parabolicTrajectory.LaunchProjectile(lanchobj);
-                lanchobj = null;
-            }
+        if (lanchobj == null)
+        {
+            isGen = false;
+        }
+
+        if (timeCheck >= 0)
+        {
+
+            timeCheck -= Time.deltaTime;
+        }
+
+        if (isGen == false && timeCheck <= 0)                                      //isGen 플레그가 false 일 경우
+        {
            
+            int RandNumber = UnityEngine.Random.Range(0, 3);                // 0 ~ 2 의 랜덤 넘버 생성
+            lanchobj = Instantiate(circleObject[RandNumber]);     //프리팹 생성후 Temp 오브젝트에 넣는다. 
+            lanchobj.transform.SetParent(genTransform);
+            lanchobj.transform.position = genTransform.position;    //고정 위치에 생성 시킨다.
+            isGen = true;            
+        }
+       
+        if(Input.GetKeyUp(KeyCode.Space))
+        {
+            if (lanchobj == null)
+            {
+                return;
+            }
+
+            parabolicTrajectory.LaunchProjectile(lanchobj);
+
+            lanchobj = null;
+            isGen = false;
+            timeCheck = 1.0f;
         }
     }
 
@@ -67,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         GameObject Temp = Instantiate(circleObject[index]);         //생성된 과일 오브젝트를 Temp 에 넣는다. 
         Temp.transform.position = position;                         //Temp 오브젝트의 위치는 함수로 받아온 위치값        
+        Temp.AddComponent<Rigidbody>();
         Point += (int)Mathf.Pow(index, 2) * 10;                     //index의 2승으로 포인트 증가 POW 함수 활용
         OnPointChanged?.Invoke(Point);                              //포인트가 변경되었을때 이벤트에 변경 되었다고 알림
     }

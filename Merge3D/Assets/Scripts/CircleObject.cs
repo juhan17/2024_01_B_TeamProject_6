@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CircleObject : MonoBehaviour
 {
-   
-    private Rigidbody rigidbody;                //3D 강체 선언
 
     public int index;                   //과일 번호 설정 
 
@@ -18,8 +16,7 @@ public class CircleObject : MonoBehaviour
 
     void Awake()
     {
-        rigidbody = GetComponent<Rigidbody>();      //오브젝트의 강체에 접근                           
-        rigidbody.isKinematic = true;               //물리 행동이 처음에는 동작하지 않게 설정
+       
         spriteRenderer = GetComponent<SpriteRenderer>();    //오브젝트에 붙어있는 컴포넌트에 접근
         inCheck = false;
     }
@@ -71,19 +68,9 @@ public class CircleObject : MonoBehaviour
                     Destroy(temp.gameObject);                                   //충돌한 물체 제거
                     Destroy(gameObject);                                        //자신도 제거 
 
-                    if(inCheck == false)
-                    {
-                        gameManager.GenObject();
-                        inCheck = true;
-                    }
                 }
             }
         }
-
-        if (collision.gameObject.tag == "Bowl" && inCheck == false)
-        {
-            gameManager.GenObject();
-            inCheck = true;
-        }
+        
     }
 }
