@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class StartStory : MonoBehaviour
+public class OneBeforeStory : MonoBehaviour
 {
     public Text textUI;
 
@@ -16,6 +16,6 @@ public class StartStory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        textUI.text = "펭눈은 오늘도 여느때나 다름없이 물고기를 한가득 사냥한 다음 집으로 돌아가고 있었다.";
+        textUI.text = "이게 뭐야?! 빙하가 다 녹았잖아? 이대로는 집으로 갈 수 없어... 방법을 찾아야해";
     }
 }
