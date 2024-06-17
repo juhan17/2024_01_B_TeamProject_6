@@ -4,5 +4,50 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/TitleScene.unity
+    guid: 5150ecdeba638b245af1f7aa36a3d76f
+  - enabled: 1
+    path: Assets/Scenes/StoryStartScene.unity
+    guid: a56ccb9e0db00424e9f2ba81bf57a7a8
+  - enabled: 1
+    path: Assets/Scenes/Story1BeforeScene.unity
+    guid: 089c2c9697afa21458c2506429b09713
+  - enabled: 1
+    path: Assets/Scenes/GameScene.unity
+    guid: 1cd79aadf55db6b40b19b66593b6012f
+  - enabled: 1
+    path: Assets/Scenes/Story1AfterScene.unity
+    guid: 4282bf2c842a3de44822d958b578f2d0
+  - enabled: 1
+    path: Assets/Scenes/Story2BeforeScene.unity
+    guid: 943de8f84d5817844b107576f5667ece
+  - enabled: 1
+    path: Assets/Scenes/GameScene 1.unity
+    guid: bd10fa9b0452f3e4c80620dfbabe7dac
+  - enabled: 1
+    path: Assets/Scenes/Story2AfterScene.unity
+    guid: 3d83bd478273f2e4cb363107ba1b30f5
+  - enabled: 1
+    path: Assets/Scenes/Story3BeforeScene.unity
+    guid: 386c63c76842bc64ebe0540e9a01ca3e
+  - enabled: 1
+    path: Assets/Scenes/BossScene.unity
+    guid: a4bf70345b382a94ca6a02ec8abb805a
+  - enabled: 1
+    path: Assets/Scenes/GameScene 2.unity
+    guid: e711d33164285644fbdadc35f2b688ba
+  - enabled: 1
+    path: Assets/Scenes/Story3AfterScene.unity
+    guid: 309220bd17f0135449cf9433ce066ad3
+  - enabled: 1
+    path: Assets/Scenes/EndingScene1.unity
+    guid: 08be5b7c462a0c64b9bbeffd58518ea7
+  - enabled: 1
+    path: Assets/Scenes/EndingScene2.unity
+    guid: bb0a40231bbb60748a1ecd5df54c133d
+  - enabled: 1
+    path: Assets/Scenes/EndingScene3.unity
+    guid: 5af59bfaadaa76b45844418097ae74a3
   m_configObjects: {}
